@@ -5,6 +5,12 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@js-joda/core':
+    specifier: ^5.6.1
+    version: 5.6.1
+  '@js-joda/timezone':
+    specifier: ^2.18.2
+    version: 2.18.2(@js-joda/core@5.6.1)
   '@nestjs/common':
     specifier: ^10.0.0
     version: 10.3.3(reflect-metadata@0.2.1)(rxjs@7.8.1)
@@ -546,6 +552,18 @@ packages:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
+
+  /@js-joda/core@5.6.1:
+    resolution: {integrity: sha512-Xla/d7ZMMR6+zRd6lTio0wRZECfcfFJP7GGe9A9L4tDOlD5CX4YcZ4YZle9w58bBYzssojVapI84RraKWDQZRg==}
+    dev: false
+
+  /@js-joda/timezone@2.18.2(@js-joda/core@5.6.1):
+    resolution: {integrity: sha512-4binOw4XBO4H6nbw0tPg1IOIrf3MF7gPeXkNiPuK1QAHPaBC0YsvtRt8BiJTqhEaBqh/Kbqp6MChlnbJ8dxQ5Q==}
+    peerDependencies:
+      '@js-joda/core': '>=1.11.0'
+    dependencies:
+      '@js-joda/core': 5.6.1
+    dev: false
 
   /@ljharb/through@2.3.12:
     resolution: {integrity: sha512-ajo/heTlG3QgC8EGP6APIejksVAYt4ayz4tqoP3MolFELzcH1x1fzwEYRJTPO0IELutZ5HQ0c26/GqAYy79u3g==}
