@@ -1,7 +1,7 @@
 import { AbstractEntity, TMutable } from './abstract.entity';
 import { Entity, PrimaryKey, Property } from '@mikro-orm/core';
-import { DateUtil } from '../util/date.util';
 import { LocalDateTime } from '@js-joda/core';
+import { LocalDateTimeType } from './local-date-time.type';
 
 export type TOfMutable<T extends BaseTimeEntity<T>> = Omit<
   TMutable<T>,
@@ -14,16 +14,16 @@ export abstract class BaseTimeEntity<T> extends AbstractEntity<T> {
   readonly id: number;
 
   @Property({
-    type: 'timestamptz',
-    onCreate: () => DateUtil.toDate(LocalDateTime.now()),
+    type: LocalDateTimeType,
+    onCreate: () => LocalDateTime.now(),
   })
-  readonly createdAt: Date;
+  readonly createdAt: LocalDateTime;
 
   @Property({
-    type: 'timestamptz',
+    type: LocalDateTimeType,
     nullable: true,
-    onCreate: () => DateUtil.toDate(LocalDateTime.now()),
-    onUpdate: () => DateUtil.toDate(LocalDateTime.now()),
+    onCreate: () => LocalDateTime.now(),
+    onUpdate: () => LocalDateTime.now(),
   })
-  readonly updatedAt: Date;
+  readonly updatedAt: LocalDateTime;
 }

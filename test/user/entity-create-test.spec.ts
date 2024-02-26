@@ -9,6 +9,7 @@ import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { User } from '../../src/user/domain/entity/user';
 import { TsMorphMetadataProvider } from '@mikro-orm/reflection';
 import { PostgreSqlDriver } from '@mikro-orm/postgresql';
+import { LocalDateTime } from '@js-joda/core';
 
 describe('User Creat Test', () => {
   let dbContainer: StartedPostgreSqlContainer;
@@ -58,6 +59,8 @@ describe('User Creat Test', () => {
     //then
     assert.equal(user.id, 1);
     assert.equal(user.email, email);
+    assert.instanceOf(user.createdAt, LocalDateTime);
+    assert.instanceOf(user.updatedAt, LocalDateTime);
   });
 
   afterAll(async () => {
