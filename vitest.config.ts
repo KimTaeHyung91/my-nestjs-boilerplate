@@ -6,6 +6,7 @@ export default defineConfig({
     include: ['test/**/*.spec.ts'],
     globals: true,
     root: './',
+    hookTimeout: 1_000 * 60 * 60,
   },
   plugins: [swc.vite()],
 });

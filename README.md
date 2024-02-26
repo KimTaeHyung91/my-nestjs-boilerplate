@@ -4,8 +4,10 @@
 
 | type           | lib name          | version |
 |----------------|-------------------|---------|
+| Runtime        | nodeJS            | v20     |
 | Package Manage | pnpm              |         |
 | ORM            | mikro-orm         | v6      |
+| DB             | postgresql        |         |
 | Compiler       | swc               |         |
 | Test           | vitest            |         |
 | Container      | docker            |         |
@@ -15,6 +17,7 @@
 | UUID           | uuid              |         |
 | Object Control | lodash            |         |
 | Date           | js-joda/core      |         |
+| AOP            | @nestjs-toss/aop  |         |
 
 ## Build
 
@@ -27,3 +30,9 @@ pnpm build
 ```shell
 pnpm start
 ```
+
+## Module
+
+### User
+
+### Auth + JWT -> (TBD)

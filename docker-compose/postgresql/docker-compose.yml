@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  my-postgresql:
+    image: postgres
+    ports:
+      - "15432:5432"
+    environment:
+      - POSTGRES_USER=my_postgresql
+      - POSTGRES_PASSWORD=my_postgresql
+      - POSTGRES_DB=my_db
+      - TZ=Asia/Seoul
+    volumes:
+      - ./data:/var/lib/postgresql/data
