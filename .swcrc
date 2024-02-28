@@ -3,10 +3,14 @@
   "sourceMaps": true,
   "jsc": {
     "parser": {
-      "syntax": "typescript",
-      "decorators": true,
-      "dynamicImport": true
+        "syntax": "typescript",
+        "decorators": true
     },
+    "transform": {
+      "decoratorMetadata": true,
+      "legacyDecorator": true
+    },
+    "target": "esnext",
     "baseUrl": "./"
   },
   "minify": false
