@@ -8,6 +8,8 @@ export class Environment {
   static getEnvFile() {
     if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
       return '.env.development';
+    } else if (process.env.NODE_ENV === 'test') {
+      return '.env.test';
     } else if (process.env.NODE_ENV === 'qa') {
       return '.env.qa';
     } else {

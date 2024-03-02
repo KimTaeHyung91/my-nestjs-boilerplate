@@ -17,6 +17,7 @@ import { BaseEntityRepository } from './common/repository/base-entity.repository
 import { PostgreSqlDriver } from '@mikro-orm/postgresql';
 import { TransactionalModule } from './common/transactional/transactional.module';
 import { MikroOrmEntitiesStorage } from '@mikro-orm/nestjs/mikro-orm.entities.storage';
+import { AuthModule } from './auth/auth.module';
 
 const getEntities = () => {
   const arr = [];
@@ -75,6 +76,7 @@ const getEntities = () => {
     }),
     UserModule,
     TransactionalModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
