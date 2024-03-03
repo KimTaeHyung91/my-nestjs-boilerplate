@@ -13,6 +13,7 @@ import {
   DatabaseConnectorModule,
   DataBaseType,
 } from './common/database-connector/database-connector.module';
+import { HttpModule } from './common/http/http.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import {
     UserModule,
     TransactionalModule,
     AuthModule,
+    HttpModule,
   ],
   controllers: [],
   providers: [],
