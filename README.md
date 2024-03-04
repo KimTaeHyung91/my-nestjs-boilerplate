@@ -1,6 +1,6 @@
 # My NestJS Boilerplate
 
-## Third Party Library
+## Library
 
 | type           | lib name          | version |
 |----------------|-------------------|---------|
@@ -35,4 +35,35 @@ pnpm start
 
 ### User
 
-### Auth + JWT -> (TBD)
+유저 모듈
+
+- 등록
+- 조회
+
+---
+
+### Auth + JWT
+
+인증 모듈
+
+- accessToken 발급
+- refreshToken 발급
+- 인증 by accessToken
+- 재발급 by refreshToken
+
+---
+
+### Payment
+
+결제 모듈
+
+- 결제
+    - 카카오
+    - 네이버
+    - 토스
+- 구독
+
+설계
+
+- 전략패턴 적용 
+
