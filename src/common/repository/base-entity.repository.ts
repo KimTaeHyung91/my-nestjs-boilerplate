@@ -1,5 +1,5 @@
-import { EntityRepository } from '@mikro-orm/core';
 import { AbstractEntity } from '../entity/abstract.entity';
+import { EntityRepository } from '@mikro-orm/postgresql';
 
 export class BaseEntityRepository<
   T extends object,

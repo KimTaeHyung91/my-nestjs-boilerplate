@@ -34,9 +34,26 @@ export class DateUtil {
     return nativeJs(from, ZoneId.systemDefault()).toLocalDateTime();
   }
 
-  static toFormat(from: Date) {
-    return nativeJs(from, ZoneId.systemDefault())
-      .toLocalDateTime()
-      .format(DateTimeFormatter.ofPattern('yyyy-MM-dd H:mm:ss'));
+  static toFormat(from: Date): string;
+  static toFormat(from: LocalDateTime): string;
+  static toFormat(
+    from: LocalDateTime,
+    format: 'yyyy-MM-dd' | 'yyyy.MM.dd' | 'yyyy-MM-dd H:mm:ss',
+  ): string;
+
+  static toFormat(
+    from: Date | LocalDateTime,
+    format:
+      | 'yyyy-MM-dd'
+      | 'yyyy.MM.dd'
+      | 'yyyy-MM-dd H:mm:ss' = 'yyyy-MM-dd H:mm:ss',
+  ) {
+    if (from instanceof Date) {
+      return nativeJs(from, ZoneId.systemDefault())
+        .toLocalDateTime()
+        .format(DateTimeFormatter.ofPattern(format));
+    } else if (from instanceof LocalDateTime) {
+      return from.format(DateTimeFormatter.ofPattern(format));
+    }
   }
 }
