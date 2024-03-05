@@ -9,6 +9,8 @@ import { UserReaderImpl } from './infrastructure/user.reader.impl';
 import { UserWriter } from './domain/user.writer';
 import { UserWriterImpl } from './infrastructure/user.writer.impl';
 import { UserFacade } from './application/user.facade';
+import { UserInternalAccess } from './domain/internal/user-internal-access';
+import { UserInternalAccessImpl } from './infrastructure/internal/user-internal-access.impl';
 
 @Module({
   imports: [MikroOrmModule.forFeature([User])],
@@ -17,7 +19,9 @@ import { UserFacade } from './application/user.facade';
     { provide: UserService, useClass: UserServiceImpl },
     { provide: UserReader, useClass: UserReaderImpl },
     { provide: UserWriter, useClass: UserWriterImpl },
+    { provide: UserInternalAccess, useClass: UserInternalAccessImpl },
   ],
   controllers: [ApiUserController],
+  exports: [UserInternalAccess],
 })
 export class UserModule {}

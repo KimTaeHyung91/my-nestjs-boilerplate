@@ -1,6 +1,6 @@
 import { Migration } from '@mikro-orm/migrations';
 
-export class PostgresqlAddUserTable20240304 extends Migration {
+export class Postgresql20240304AddUserTable extends Migration {
   async up(): Promise<void> {
     try {
       super.addSql(`

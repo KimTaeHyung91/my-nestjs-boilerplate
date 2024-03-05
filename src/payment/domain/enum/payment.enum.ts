@@ -4,4 +4,9 @@ export namespace PaymentEnum {
     NAVER = 'NAVER',
     TOSS = 'TOSS',
   }
+
+  export enum PaymentInfoType {
+    CARD = 'CARD',
+    BANK = 'BANK',
+  }
 }

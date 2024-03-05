@@ -6,8 +6,13 @@ import { NaverPaymentProcessor } from './domain/naver/naver-payment.processor';
 import { TossPaymentProcessor } from './domain/toss/toss-payment.processor';
 import { PaymentEnum } from './domain/enum/payment.enum';
 import { PaymentServiceImpl } from './domain/payment.service.impl';
+import { UserModule } from '../user/user.module';
+import { ApiPaymentController } from './interfaces/api-payment.controller';
+import { MikroOrmModule } from '@mikro-orm/nestjs';
+import { PaymentInfo } from './domain/entity/payment-info';
 
 @Module({
+  imports: [UserModule, MikroOrmModule.forFeature([PaymentInfo])],
   providers: [
     KakaoPaymentProcessor,
     NaverPaymentProcessor,
@@ -32,15 +37,8 @@ import { PaymentServiceImpl } from './domain/payment.service.impl';
         return map;
       },
     },
-    {
-      provide: PaymentService,
-      inject: [PaymentProcessor],
-      useFactory: (
-        paymentProcessor: Map<PaymentEnum.PayType, PaymentProcessor>,
-      ) => {
-        return new PaymentServiceImpl(paymentProcessor);
-      },
-    },
+    { provide: PaymentService, useClass: PaymentServiceImpl },
   ],
+  controllers: [ApiPaymentController],
 })
 export class PaymentModule {}

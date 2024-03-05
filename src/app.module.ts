@@ -14,6 +14,7 @@ import {
   DataBaseType,
 } from './common/database-connector/database-connector.module';
 import { HttpModule } from './common/http/http.module';
+import { PaymentModule } from './payment/payment.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { HttpModule } from './common/http/http.module';
     TransactionalModule,
     AuthModule,
     HttpModule,
+    PaymentModule,
   ],
   controllers: [],
   providers: [],
