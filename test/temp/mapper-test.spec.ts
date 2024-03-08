@@ -17,6 +17,17 @@ import {
 } from '@automapper/core';
 import { ClassConstructor } from 'class-transformer';
 
+class Delivery {
+  readonly id: number = 1;
+  readonly city: string = '서울';
+  readonly streetAddress: string;
+  readonly numberingAddress: string = '강남구 홍길동 11-11 3층';
+
+  getFullNumberingAddress() {
+    return `${this.city}시 ${this.numberingAddress}`;
+  }
+}
+
 class User {
   @AutoMap()
   readonly id: number = 1;
@@ -32,6 +43,9 @@ class User {
 
   @AutoMap()
   readonly updatedAt: LocalDateTime = LocalDateTime.now();
+
+  @AutoMap()
+  readonly delivery: Delivery = new Delivery();
 
   getCreatedAt(): string {
     return this.createdAt.format(DateTimeFormatter.ofPattern('yyyy-MM-dd'));
@@ -52,6 +66,9 @@ namespace UserInfo {
 
     @AutoMap()
     readonly createdDt: string;
+
+    @AutoMap()
+    readonly deliveryInfo: string;
   }
 
   export class UserTokenInfo {
@@ -86,6 +103,10 @@ class UserInfoMapperImpl extends AutomapperProfile implements UserInfoMapper {
         forMember(
           (main) => main.createdDt,
           mapFrom((user) => user.getCreatedAt()),
+        ),
+        forMember(
+          (main) => main.deliveryInfo,
+          mapFrom((user) => user.delivery.getFullNumberingAddress()),
         ),
       );
       createMap(
@@ -140,6 +161,7 @@ describe('AutoMapper Test', () => {
     assert.equal(main.name, user.name);
     assert.equal(main.email, user.email);
     assert.equal(main.createdDt, user.getCreatedAt());
+    assert.equal(main.deliveryInfo, user.delivery.getFullNumberingAddress());
   });
 
   it('strategy: classes, user convert to userinfo.userTokenInfo', () => {
