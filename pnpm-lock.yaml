@@ -5,6 +5,21 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@automapper/classes':
+    specifier: ^8.8.1
+    version: 8.8.1(@automapper/core@8.8.1)(reflect-metadata@0.2.1)
+  '@automapper/core':
+    specifier: ^8.8.1
+    version: 8.8.1
+  '@automapper/mikro':
+    specifier: ^8.8.1
+    version: 8.8.1(@automapper/classes@8.8.1)(@mikro-orm/core@6.1.6)(reflect-metadata@0.2.1)
+  '@automapper/nestjs':
+    specifier: ^8.8.1
+    version: 8.8.1(@automapper/core@8.8.1)(@nestjs/common@10.3.3)(@nestjs/core@10.3.3)
+  '@automapper/pojos':
+    specifier: ^8.8.1
+    version: 8.8.1(@automapper/core@8.8.1)
   '@faker-js/faker':
     specifier: ^8.4.1
     version: 8.4.1
@@ -81,7 +96,7 @@ dependencies:
     specifier: ^4.0.1
     version: 4.0.1
   reflect-metadata:
-    specifier: ^0.2.0
+    specifier: ^0.2.1
     version: 0.2.1
   rxjs:
     specifier: ^7.8.1
@@ -236,6 +251,57 @@ packages:
     transitivePeerDependencies:
       - chokidar
     dev: true
+
+  /@automapper/classes@8.8.1(@automapper/core@8.8.1)(reflect-metadata@0.2.1):
+    resolution: {integrity: sha512-qWP92Vz4z5zGWVXVkoGKmI9PIiAh8uhTBcKpKMmTVwmS1wfOQgj3ceD+A3mlC9ZUTohwvXebS3M30scLaUZmeg==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      '@automapper/core': 8.8.1
+      reflect-metadata: ~0.1.13
+    dependencies:
+      '@automapper/core': 8.8.1
+      reflect-metadata: 0.2.1
+    dev: false
+
+  /@automapper/core@8.8.1:
+    resolution: {integrity: sha512-VIRULNAImqaTojp8zqhVGVimjxjriawqZWlemooWh5B5tX2XlgA6icPrQBQh+M9wY8IVQipBTOcr338N9lf8RA==}
+    engines: {node: '>=16.0.0'}
+    dev: false
+
+  /@automapper/mikro@8.8.1(@automapper/classes@8.8.1)(@mikro-orm/core@6.1.6)(reflect-metadata@0.2.1):
+    resolution: {integrity: sha512-x6fhRSj+kBH6cNsJZdNXgRFtUcxRT/SCto7gueXsTFrsz/qZ9kQI7bLznYy8GM2rmAKL455bnObmYMSBdDllyQ==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      '@automapper/classes': 8.8.1
+      '@mikro-orm/core': ^5.0.0
+      reflect-metadata: ~0.1.13
+    dependencies:
+      '@automapper/classes': 8.8.1(@automapper/core@8.8.1)(reflect-metadata@0.2.1)
+      '@mikro-orm/core': 6.1.6
+      reflect-metadata: 0.2.1
+    dev: false
+
+  /@automapper/nestjs@8.8.1(@automapper/core@8.8.1)(@nestjs/common@10.3.3)(@nestjs/core@10.3.3):
+    resolution: {integrity: sha512-EeC0UBoBIchnWwNdfVUb0bbOKaHhuDLBOFXeZbwUxFcOn2CR+zOs96Dv6gd9x0WGZGcdZ39h4hkDaos6QPCG+Q==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      '@automapper/core': 8.8.1
+      '@nestjs/common': ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0
+      '@nestjs/core': ^7.0.0 || ^8.0.0  || ^9.0.0 || ^10.0.0
+    dependencies:
+      '@automapper/core': 8.8.1
+      '@nestjs/common': 10.3.3(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.1)(rxjs@7.8.1)
+      '@nestjs/core': 10.3.3(@nestjs/common@10.3.3)(@nestjs/platform-express@10.3.3)(reflect-metadata@0.2.1)(rxjs@7.8.1)
+    dev: false
+
+  /@automapper/pojos@8.8.1(@automapper/core@8.8.1):
+    resolution: {integrity: sha512-nHzNmzPNikflL1S0m1NA9lYpPC54ZS/Mo/j2yyvyfoXjIqqzVmVWYefgp1EJRbqrL0g6lS/ZgSdEKgmUW/Tv0w==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      '@automapper/core': 8.8.1
+    dependencies:
+      '@automapper/core': 8.8.1
+    dev: false
 
   /@babel/code-frame@7.23.5:
     resolution: {integrity: sha512-CgH3s1a96LipHCmSUmYFPwY7MNx8C3avkq7i4Wl3cfa662ldtUe4VM1TPXX70pfmrlWTb6jLqTYrZyT2ZTJBgA==}

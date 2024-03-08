@@ -12,7 +12,8 @@
 | Test           | vitest            |         |
 | Container      | docker            |         |
 | Test Container | testcontainers    |         |
-| Mapper         | class-transformer |         |
+| Transform      | class-transformer |         |
+| Mapper         | automapper        |         |
 | Validator      | class-validator   |         |
 | UUID           | uuid              |         |
 | Object Control | lodash            |         |
