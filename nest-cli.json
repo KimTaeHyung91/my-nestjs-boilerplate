@@ -5,6 +5,18 @@
   "compilerOptions": {
     "deleteOutDir": true,
     "builder": "swc",
-    "typeCheck": true
+    "typeCheck": true,
+    "plugins": [
+      {
+        "name": "@automapper/classes/transformer-plugin",
+        "options": {
+          "modelFileNameSuffix": [
+            ".info.ts",
+            ".dto.ts",
+            ".entity.ts"
+          ]
+        }
+      }
+    ]
   }
 }

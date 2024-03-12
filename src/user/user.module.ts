@@ -11,11 +11,13 @@ import { UserWriterImpl } from './infrastructure/user.writer.impl';
 import { UserFacade } from './application/user.facade';
 import { UserInternalAccess } from './domain/internal/user-internal-access';
 import { UserInternalAccessImpl } from './infrastructure/internal/user-internal-access.impl';
+import { UserMapper } from './domain/user.mapper';
 
 @Module({
   imports: [MikroOrmModule.forFeature([User])],
   providers: [
     UserFacade,
+    UserMapper,
     { provide: UserService, useClass: UserServiceImpl },
     { provide: UserReader, useClass: UserReaderImpl },
     { provide: UserWriter, useClass: UserWriterImpl },

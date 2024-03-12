@@ -1,11 +1,11 @@
 import { UserService } from './user.service';
 import { Inject, Injectable } from '@nestjs/common';
 import { UserCommand } from './user.command';
-import { UserInfo } from './user.info';
 import { Transactional } from '../../common/transactional/transactional';
 import { UserReader } from './user.reader';
-import { MapperUtil } from '../../common/util/mapper.util';
 import { UserWriter } from './user.writer';
+import { UserMapper } from './user.mapper';
+import { UserInfo } from './user.info';
 
 @Injectable()
 export class UserServiceImpl implements UserService {
@@ -14,6 +14,7 @@ export class UserServiceImpl implements UserService {
     private readonly userReader: UserReader,
     @Inject(UserWriter)
     private readonly userWriter: UserWriter,
+    private readonly userMapper: UserMapper,
   ) {}
 
   @Transactional()
@@ -24,6 +25,7 @@ export class UserServiceImpl implements UserService {
 
   async retrieveUser(userToken: string): Promise<UserInfo.UserMain> {
     const user = await this.userReader.getUserBy(userToken);
-    return MapperUtil.convertTo(UserInfo.UserMain, user);
+
+    return this.userMapper.of(user, UserInfo.UserMain);
   }
 }

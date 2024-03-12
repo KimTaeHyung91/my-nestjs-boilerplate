@@ -14,6 +14,7 @@ import {
 import { RandomStringUtil } from '../../../common/util/random-string.util';
 import * as bcrypt from 'bcrypt';
 import { PaymentInfo } from '../../../payment/domain/entity/payment-info';
+import { DateUtil } from '../../../common/util/date.util';
 
 @Entity()
 @Index({ name: 'user_idx_01', properties: ['userToken'] })
@@ -34,19 +35,16 @@ export class User extends BaseTimeEntity<User> {
     this,
   );
 
-  private constructor(userToken: string, email: string, password: string) {
-    super();
-    this.userToken = userToken;
-    this.email = email;
-    this.password = password;
-  }
-
   static of(props: Pick<TOfMutable<User>, 'password' | 'email'>) {
-    return new this(
-      RandomStringUtil.generateUUIDForIndex(),
-      props.email,
-      props.password,
-    );
+    const _this = new this();
+
+    _this.mutable({
+      userToken: RandomStringUtil.generateUUIDForIndex(),
+      email: props.email,
+      password: props.password,
+    });
+
+    return _this;
   }
 
   addPaymentInfo(paymentInfo: PaymentInfo) {
@@ -56,6 +54,10 @@ export class User extends BaseTimeEntity<User> {
   // lazy loading
   async getPaymentInfos() {
     return await this.paymentInfos.loadItems();
+  }
+
+  getCreatedDt() {
+    return DateUtil.toFormat(this.createdAt);
   }
 
   @BeforeCreate()

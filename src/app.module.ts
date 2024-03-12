@@ -15,10 +15,15 @@ import {
 } from './common/database-connector/database-connector.module';
 import { HttpModule } from './common/http/http.module';
 import { PaymentModule } from './payment/payment.module';
+import { AutomapperModule } from '@automapper/nestjs';
+import { classes } from '@automapper/classes';
 
 @Module({
   imports: [
     DatabaseConnectorModule.register({ type: DataBaseType.POSTGRESQL }),
+    AutomapperModule.forRoot({
+      strategyInitializer: classes(),
+    }),
     UserModule,
     TransactionalModule,
     AuthModule,

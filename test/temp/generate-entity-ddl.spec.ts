@@ -8,7 +8,7 @@ import {
 import { Test } from '@nestjs/testing';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { TsMorphMetadataProvider } from '@mikro-orm/reflection';
-import { User } from '../../src/user/domain/entity/user';
+import { UserEntity } from '../../src/user/domain/entity/user';
 import { PaymentInfo } from '../../src/payment/domain/entity/payment-info';
 
 describe('Generate Entity DDL', () => {
@@ -27,7 +27,7 @@ describe('Generate Entity DDL', () => {
           user: dbContainer.getUsername(),
           password: dbContainer.getPassword(),
           dbName: dbContainer.getDatabase(),
-          entities: [User, PaymentInfo],
+          entities: [UserEntity, PaymentInfo],
           metadataProvider: TsMorphMetadataProvider,
           allowGlobalContext: true,
           debug: ['info', 'query', 'schema', 'query-params'],
