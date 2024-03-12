@@ -6,7 +6,7 @@ import {
   StartedPostgreSqlContainer,
 } from '@testcontainers/postgresql';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
-import { UserEntity } from '../../src/user/domain/entity/user';
+import { User } from '../../src/user/domain/entity/user';
 import { TsMorphMetadataProvider } from '@mikro-orm/reflection';
 import { PostgreSqlDriver } from '@mikro-orm/postgresql';
 import { LocalDateTime } from '@js-joda/core';
@@ -27,7 +27,7 @@ describe('UserEntity Creat Test', () => {
           user: dbContainer.getUsername(),
           password: dbContainer.getPassword(),
           dbName: dbContainer.getDatabase(),
-          entities: [UserEntity],
+          entities: [User],
           allowGlobalContext: true,
           metadataProvider: TsMorphMetadataProvider,
           debug: ['info', 'query', 'query-params'],
@@ -47,7 +47,7 @@ describe('UserEntity Creat Test', () => {
   it('유저 정보는 저장되어야된다.', async () => {
     //given
     const email = 'test@test.com';
-    const user = UserEntity.of({
+    const user = User.of({
       password: '1234',
       email,
     });

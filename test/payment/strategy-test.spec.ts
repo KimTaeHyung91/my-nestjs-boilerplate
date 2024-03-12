@@ -6,7 +6,7 @@ import { PaymentServiceImpl } from '../../src/payment/domain/payment.service.imp
 import { PaymentEnum } from '../../src/payment/domain/enum/payment.enum';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { PostgreSqlDriver } from '@mikro-orm/postgresql';
-import { UserEntity } from '../../src/user/domain/entity/user';
+import { User } from '../../src/user/domain/entity/user';
 import { PaymentInfo } from '../../src/payment/domain/entity/payment-info';
 import { TsMorphMetadataProvider } from '@mikro-orm/reflection';
 import {
@@ -32,7 +32,7 @@ describe('Payment Strategy Test', () => {
           user: dbContainer.getUsername(),
           password: dbContainer.getPassword(),
           dbName: dbContainer.getDatabase(),
-          entities: [UserEntity, PaymentInfo],
+          entities: [User, PaymentInfo],
           metadataProvider: TsMorphMetadataProvider,
           allowGlobalContext: true,
           debug: ['info', 'query', 'schema', 'query-params'],
