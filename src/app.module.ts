@@ -17,6 +17,7 @@ import { HttpModule } from './common/http/http.module';
 import { PaymentModule } from './payment/payment.module';
 import { AutomapperModule } from '@automapper/nestjs';
 import { classes } from '@automapper/classes';
+import { FileModule } from './file/file.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { classes } from '@automapper/classes';
     AuthModule,
     HttpModule,
     PaymentModule,
+    FileModule,
   ],
   controllers: [],
   providers: [],
